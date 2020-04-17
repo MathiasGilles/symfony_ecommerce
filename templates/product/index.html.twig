@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+{% if products is not empty %}
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td><a class="btn btn-primary" href="{{path('product_detail', {id:product.id})}}">Show</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Il n'y a pas de produits</p>
+{% endif %}
+{% endblock %}
