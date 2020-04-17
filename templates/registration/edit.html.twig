@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{user.firstName}} {{user.lastName}}
+{% endblock %}
+
+{% block body %}
+    {{form(formUser)}}
+{% endblock %}
