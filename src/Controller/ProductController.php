@@ -25,8 +25,8 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/new",name="product_new")
-     * @Route("/product/edit/{id}",name="product_edit")
+     * @Route("/new/product",name="product_new")
+     * @Route("/edit/product/{id}",name="product_edit")
      */
     public function new(Product $product = null, Request $request)
     {
@@ -71,7 +71,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/delete/{id}",name="product_delete")
+     * @Route("/delete/product/{id}",name="product_delete")
      */
     public function delete($id = null, ProductRepository $repo)
     {

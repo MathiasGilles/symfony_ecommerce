@@ -1,0 +1,40 @@
+Name : Name
+
+Description : Description
+
+Price : Price
+
+Stock : Stock
+
+Upload Photo : "Upload photo"
+
+Save : Save
+
+message:
+    connect_to_add: "Connect on your account to add this product in your cart"
+
+product:
+    create: "Add a product"
+    nothing: "There is no products"
+    in_stock: "in stock"
+
+title:
+    product: Products
+
+table:
+    name: Name
+    action : Action
+
+nav:
+    home: home
+    cart: "My cart"
+    account: "My account"
+    login: "Log In"
+    logout: "Log Out"
+    register: "Register"
+
+button:
+    show : Show
+    delete: Delete
+    update: Update
+    add_cart: "Add to cart"

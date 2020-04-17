@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{path('product')}}">Home</a>
+    <a class="navbar-brand" href="{{path('product')}}">{{'nav.home'|trans}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -10,23 +10,23 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             {% if app.user is not empty %}
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Item 1</a>
+                    <a class="nav-link" href="#">{{'nav.cart'|trans}}</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">Item 2</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{path('user_edit', {id:app.user.id})}}" class="nav-link">Mon compte</a>
+                    <a href="{{path('user_edit', {id:app.user.id})}}" class="nav-link">{{'nav.account'|trans}}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{path('app_logout')}}" class="nav-link">Se déconnecter</a>
+                    <a href="{{path('app_logout')}}" class="nav-link">{{'nav.logout'|trans}}</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a href="{{path('app_login')}}" class="nav-link">Connexion</a>
+                    <a href="{{path('app_login')}}" class="nav-link">{{'nav.login'|trans}}</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{path('app_register')}}" class="nav-link">S'inscrire</a>
+                    <a href="{{path('app_register')}}" class="nav-link">{{'nav.register'|trans}}</a>
                 </li>
             {% endif %}
         </ul>

@@ -1,0 +1,40 @@
+Name : Nom
+
+Description : Description
+
+Price : Prix
+
+Stock : Stock
+
+Upload Photo : "Télécharger une photo"
+
+Save : Sauvegarder
+
+message:
+    connect_to_add: "Connectez vous pour commencer à remplir votre panier"
+
+product:
+    create: "Ajouter un produit"
+    nothing: "Il n'y a pas de produits"
+    in_stock: "en stock"
+
+title:
+    product: Produits
+
+table:
+    name: Nom
+    action: Action
+
+nav:
+    home: Acceuil
+    cart: "Mon panier"
+    account: "Mon compte"
+    login: "Se connecter"
+    logout: "Se deconnecter"
+    register: "S'inscrire"
+
+button:
+    show: Infos
+    delete: Supprimer
+    update: Modifier
+    add_cart: "Ajouter au panier"

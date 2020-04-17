@@ -32,7 +32,7 @@ class Cart
     /**
      * @ORM\Column(type="boolean")
      */
-    private $status;
+    private $status = false;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\CartContent", mappedBy="cart", orphanRemoval=true)

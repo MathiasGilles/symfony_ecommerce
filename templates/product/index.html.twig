@@ -1,26 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}{{'title.product'|trans}}{% endblock %}
 
 {% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+    <a class="btn btn-primary" href="{{path('product_new')}}">{{'product.create'|trans}}</a>
+{% endif %}
 {% if products is not empty %}
     <table class="table">
         <thead>
             <tr>
-                <td>Nom</td>
-                <td>Action</td>
+                <td>{{'table.name'|trans}}</td>
+                <td>{{'table.action'|trans}}</td>
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
                 <tr>
                     <td>{{product.name}}</td>
-                    <td><a class="btn btn-primary" href="{{path('product_detail', {id:product.id})}}">Show</a></td>
+                    <td><a class="btn btn-primary" href="{{path('product_detail', {id:product.id})}}">{{'button.show'|trans}}</a></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 {% else %}
-    <p>Il n'y a pas de produits</p>
+    <p>{{'product.nothing'|trans}}</p>
 {% endif %}
 {% endblock %}
