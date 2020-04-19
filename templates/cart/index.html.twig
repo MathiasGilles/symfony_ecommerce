@@ -38,7 +38,7 @@
     </table>
 
 <p>Montant total du panier : {{total}} $</p>
-<a class="btn btn-primary" href="#">Acheter</a>
+<a class="btn btn-primary" href="{{path('cart_buy')}}">Acheter</a>
 {% else %}
     <p>Votre panier est vide <a class="btn btn-primary" href="{{path('product')}}">Retour a liste des produtis</a></p>
 {% endif %}

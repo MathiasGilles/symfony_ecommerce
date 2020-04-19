@@ -42,6 +42,7 @@ class Cart
     public function __construct()
     {
         $this->cartContents = new ArrayCollection();
+        
     }
 
     public function getId(): ?int
