@@ -10,10 +10,7 @@
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             {% if app.user is not empty %}
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">{{'nav.cart'|trans}}</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Item 2</a>
+                    <a class="nav-link" href="{{path('cart')}}">{{'nav.cart'|trans}}</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{path('user_edit', {id:app.user.id})}}" class="nav-link">{{'nav.account'|trans}}</a>

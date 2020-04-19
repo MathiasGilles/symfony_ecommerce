@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
+use App\Entity\CartContent;
 use App\Entity\Product;
+use App\Form\CartContentType;
 use App\Form\ProductType;
+use App\Repository\CartRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -87,15 +91,43 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/question/detail/{id}",name="product_detail")
+     * @Route("/product/detail/{id}",name="product_detail")
+     * @Route("/product/add/{id}",name="product_add_to_cart")
      */
-    public function detail($id, ProductRepository $repo)
+    public function detail($id, ProductRepository $repo,Request $request,CartRepository $repoCart)
     {
 
         $product = $repo->find($id);
+        $cart = $repoCart->findOneBy(['user' => $this->getUser(), 'status' => false]);
+        $manager = $this->getDoctrine()->getManager();
+
+        if ($cart === null) {
+            $cart = new Cart();
+            $cart->setUser($this->getUser());
+            $manager->persist($cart);
+            
+        }
+
+        $content = new CartContent();
+        
+        $form = $this->createForm(CartContentType::class, $content);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $content->setAddedAt(new \DateTime())
+                ->setProduct($product)
+                ->setCart($cart);
+
+            $manager->persist($content);
+            $manager->flush();
+
+            $this->addFlash("success", "Article ajouté au panier");
+            return $this->redirectToRoute("product");
+        }
 
         return $this->render('product/product_detail.html.twig', [
             'product' => $product,
+            'formCartContent' => $form->createView()
         ]);
     }
 }

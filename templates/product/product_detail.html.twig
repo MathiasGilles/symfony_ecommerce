@@ -22,8 +22,9 @@
     <a class="btn btn-danger" href="{{path('product_delete', {id:product.id})}}">{{'button.delete'|trans}}</a>
 {% endif %}
 {% if app.user %}
-    <a class="btn btn-primary" href="#">{{'button.add_cart'|trans}}</a>
+    {{form(formCartContent)}}
 {% else %}
+    
     <p>{{'message.connect_to_add'|trans}}</p>
 {% endif %}
 
