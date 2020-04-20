@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'nav.account'|trans}}{% endblock %}
+
+{% block body %}
+<br>
+<a href="{{path('user_edit', {id:app.user.id})}}" class="btn btn-primary">Modifier mes informations</a>
+<br><br>
+
+{% if carts is not empty %}
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Montant</td>
+                <td>Date</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for cart in carts %}
+
+                {% set totalAmount = 0 %}
+                {% set amount = 0 %}
+
+                {% for content in cart.cartContents %}
+                    {% set amount = content.quantity * content.product.price %}
+                    {% set totalAmount = totalAmount + amount %}
+                {% endfor %}
+
+                <tr>
+                    <td>{{cart.id}}</td>
+                    <td>{{totalAmount}}</td>
+                    <td>{{cart.buyAt|date("m/d/Y")}}</td>
+                    <td><a href="#" class="btn btn-primary">Show</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+{% endblock %}

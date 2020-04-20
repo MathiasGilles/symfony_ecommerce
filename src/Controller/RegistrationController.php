@@ -4,16 +4,13 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-use App\Form\UserEditType;
 use App\Security\AppAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -50,28 +47,6 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
-            'formUser' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/user/{id}",name="user_edit")
-     */
-    public function edit(Request $request, User $user,TranslatorInterface $translator): Response
-    {
-        $form = $this->createForm(UserEditType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $this->getDoctrine()->getManager()->flush();
-
-            $this->addFlash("success",$translator->trans('message.profil_update'));
-            return $this->redirectToRoute('product');
-        }
-
-        return $this->render('registration/edit.html.twig', [
-            'user' => $user,
             'formUser' => $form->createView(),
         ]);
     }
