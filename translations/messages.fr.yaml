@@ -28,7 +28,8 @@ message:
     photo_upload: "Cette photo ne peut pas être téléchargé"
     product_save: "Produit sauvegardé"
     product_delete: "Produit supprimé"
-    product_added: "Produit ajouté au panier" 
+    product_added: "Produit ajouté au panier"
+    profil_update: "Profile modifié" 
 
 product:
     create: "Ajouter un produit"

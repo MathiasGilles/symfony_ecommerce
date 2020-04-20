@@ -29,6 +29,7 @@ message:
     product_save: "Product saved"
     product_delete: "Product deleted"
     product_added : "Product added to your cart"
+    profil_update: "Profil updated"
 
 product:
     create: "Add a product"

@@ -13,6 +13,7 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -56,7 +57,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/user/{id}",name="user_edit")
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user,TranslatorInterface $translator): Response
     {
         $form = $this->createForm(UserEditType::class, $user);
         $form->handleRequest($request);
@@ -65,7 +66,7 @@ class RegistrationController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash("success", "Profil modifié");
+            $this->addFlash("success",$translator->trans('message.profil_update'));
             return $this->redirectToRoute('product');
         }
 
