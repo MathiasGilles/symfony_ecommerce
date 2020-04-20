@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cart{% endblock %}
+{% block title %}{{'nav.cart'|trans}}{% endblock %}
 
 {% block body %}
 {% if cart is not empty %}
@@ -8,11 +8,11 @@
     <table class="table">
         <thead>
             <tr>
-                <td>Produit</td>
-                <td>Quantité</td>
-                <td>Prix</td>
-                <td>Montant</td>
-                <td>Action</td>
+                <td>{{'table.product'|trans}}</td>
+                <td>{{'table.quantity'|trans}}</td>
+                <td>{{'table.price'|trans}}</td>
+                <td>{{'table.amount'|trans}}</td>
+                <td>{{'table.action'|trans}}</td>
             </tr>
         </thead>
         <tbody>
@@ -30,16 +30,16 @@
                     <td>{{content.quantity}}</td>
                     <td>{{content.product.price}}</td>
                     <td>{{totalProduct}} $</td>
-                    <td><a href="{{path('cart_product_delete', {id:content.id})}}" class="btn btn-danger">Supprimer</a></td>
+                    <td><a href="{{path('cart_product_delete', {id:content.id})}}" class="btn btn-danger">{{'button.delete'|trans}}</a></td>
 
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-<p>Montant total du panier : {{total}} $</p>
-<a class="btn btn-primary" href="{{path('cart_buy')}}">Acheter</a>
+<p>{{'message.cart_total'|trans}} {{total}} $</p>
+<a class="btn btn-primary" href="{{path('cart_buy')}}">{{'button.buy'|trans}}</a>
 {% else %}
-    <p>Votre panier est vide <a class="btn btn-primary" href="{{path('product')}}">Retour a liste des produtis</a></p>
+    <p>{{'message.cart_empty'|trans}}<a class="btn btn-primary" href="{{path('product')}}">{{'button.back'|trans}}</a></p>
 {% endif %}
 {% endblock %}

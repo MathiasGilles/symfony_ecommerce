@@ -4,14 +4,31 @@ Description : Description
 
 Price : Prix
 
+Quantity : Quantité
+
 Stock : Stock
 
 Upload Photo : "Télécharger une photo"
 
 Save : Sauvegarder
 
+Email : Email
+
+First name : Prénom
+
+Last name : "Nom de famille"
+
 message:
     connect_to_add: "Connectez vous pour commencer à remplir votre panier"
+    cart_empty: "Votre panier est vide"
+    cart_total: "Montant total du panier :"
+    product_deleted: "Produit retiré du panier"
+    product_not_found: "Produit introuvable"
+    cart_buy: "Panier acheté"
+    photo_upload: "Cette photo ne peut pas être téléchargé"
+    product_save: "Produit sauvegardé"
+    product_delete: "Produit supprimé"
+    product_added: "Produit ajouté au panier" 
 
 product:
     create: "Ajouter un produit"
@@ -24,6 +41,10 @@ title:
 table:
     name: Nom
     action: Action
+    product: Produit
+    quantity: Quantité
+    price: Prix
+    amount: Montant
 
 nav:
     home: Acceuil
@@ -38,3 +59,5 @@ button:
     delete: Supprimer
     update: Modifier
     add_cart: "Ajouter au panier"
+    buy: Acheter
+    back: "Retour a la liste des produits"

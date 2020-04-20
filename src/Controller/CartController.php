@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Entity\CartContent;
 use App\Repository\CartRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CartController extends AbstractController
 {
@@ -26,17 +26,17 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/delete/{id}",name="cart_product_delete")
      */
-    public function delete(CartContent $content = null)
+    public function delete(CartContent $content = null,TranslatorInterface $translator)
     {
         if ($content != null) {
             $manager = $this->getDoctrine()->getManager();
             $manager->remove($content);
             $manager->flush();
 
-            $this->addFlash("success","Produit retiré du panier");
+            $this->addFlash("success",$translator->trans('message.product_deleted'));
         }
         else{
-            $this->addFlash("danger","Produit introuvable");
+            $this->addFlash("danger",$translator->trans('message.product_not_found'));
         }
 
         return $this->redirectToRoute('cart');
@@ -45,7 +45,7 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/buy",name="cart_buy")
      */
-    public function buy(CartRepository $repo)
+    public function buy(CartRepository $repo,TranslatorInterface $translator)
     {
         $cart = $repo ->findOneBy(['user' => $this->getUser(), 'status' => false]);
         $manager = $this->getDoctrine()->getManager();
@@ -56,7 +56,7 @@ class CartController extends AbstractController
         $manager->persist($cart);
         $manager->flush();
         
-        $this->addFlash("success","Panier acheté");
+        $this->addFlash("success",$translator->trans('message.cart_buy'));
         return $this->redirectToRoute('product');
     }
 }

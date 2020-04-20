@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ProductController extends AbstractController
 {
@@ -32,7 +32,7 @@ class ProductController extends AbstractController
      * @Route("/new/product",name="product_new")
      * @Route("/edit/product/{id}",name="product_edit")
      */
-    public function new(Product $product = null, Request $request)
+    public function new(Product $product = null, Request $request,TranslatorInterface $translator)
     {
         if (!$product) {
             $product = new Product();
@@ -56,7 +56,7 @@ class ProductController extends AbstractController
                         $nomFicher
                     );
                 } catch (FileException $e) {
-                    $this->addFlash('danger', "Impossible d'uploader le fichier");
+                    $this->addFlash('danger', $translator->trans('message.photo_upload'));
                     return $this->redirectToRoute('product');
                 }
                 $product->setPhoto($nomFicher);
@@ -65,7 +65,7 @@ class ProductController extends AbstractController
             $manager->persist($product);
             $manager->flush();
 
-            $this->addFlash("success", "Produit sauvegardé");
+            $this->addFlash("success", $translator->trans('message.product_save'));
             return $this->redirectToRoute('product');
         }
 
@@ -77,7 +77,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/delete/product/{id}",name="product_delete")
      */
-    public function delete($id = null, ProductRepository $repo)
+    public function delete($id = null, ProductRepository $repo,TranslatorInterface $translator)
     {
 
         if ($id != null) {
@@ -86,7 +86,7 @@ class ProductController extends AbstractController
             $manager->remove($product);
             $manager->flush();
         }
-        $this->addFlash("success", "Product supprimé");
+        $this->addFlash("success",$translator->trans('message.product_delete'));
         return $this->redirectToRoute('product');
     }
 
@@ -94,7 +94,7 @@ class ProductController extends AbstractController
      * @Route("/product/detail/{id}",name="product_detail")
      * @Route("/product/add/{id}",name="product_add_to_cart")
      */
-    public function detail($id, ProductRepository $repo,Request $request,CartRepository $repoCart)
+    public function detail($id, ProductRepository $repo,Request $request,CartRepository $repoCart,TranslatorInterface $translator)
     {
 
         $product = $repo->find($id);
@@ -121,7 +121,7 @@ class ProductController extends AbstractController
             $manager->persist($content);
             $manager->flush();
 
-            $this->addFlash("success", "Article ajouté au panier");
+            $this->addFlash("success",$translator->trans('message.product_added'));
             return $this->redirectToRoute("product");
         }
 

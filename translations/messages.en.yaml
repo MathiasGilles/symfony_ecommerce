@@ -4,14 +4,31 @@ Description : Description
 
 Price : Price
 
+Quantity : Quantity
+
 Stock : Stock
 
 Upload Photo : "Upload photo"
 
 Save : Save
 
+Email : Email
+
+First name : "First Name"
+
+Last name : "Last Name"
+
 message:
     connect_to_add: "Connect on your account to add this product in your cart"
+    cart_empty: "Your cart is empty"
+    cart_total: "Total amount of the cart : "
+    product_deleted: "Product deleted from the cart"
+    product_not_found: "Product not found"
+    cart_buy: "Cart bought"
+    photo_upload: "This photo can't be upload"
+    product_save: "Product saved"
+    product_delete: "Product deleted"
+    product_added : "Product added to your cart"
 
 product:
     create: "Add a product"
@@ -24,6 +41,10 @@ title:
 table:
     name: Name
     action : Action
+    product: Product
+    quantity: Quantity
+    price: Price
+    amount: Amount
 
 nav:
     home: home
@@ -38,3 +59,5 @@ button:
     delete: Delete
     update: Update
     add_cart: "Add to cart"
+    buy: Buy
+    back: "Back to products list"
