@@ -36,14 +36,9 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$")
      */
 
     private $password;
-
-    /**
-     * @Assert\EqualTo(propertyPath="password", message="Do not match password")
-     */
 
     public $confirm_password;
     /**

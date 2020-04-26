@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SuperAdminController!{% endblock %}
+
+{% block body %}
+
+    <h2>{{ 'message.cart_not_bought'|trans }}</h2>
+
+    <table class="table">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>{{ 'table.name'|trans }}</td>
+        <td>{{ 'table.product'|trans }}</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% if carts is not empty %}
+        {% for cart in carts %}
+            <tr>
+                <td>{{ cart.id }}</td>
+                <td>{{ cart.user.firstName }} - {{ cart.user.lastName }}</td>
+                <td>
+                    {% for content in cart.cartContents %}
+                        <li>
+                            {{ content.product.name }}
+                        </li>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+
+
+
+    {% else %}
+        <p>{{ 'message.cart_not_validate'|trans }}</p>
+    {% endif %}
+
+    <h2>{{ 'message.user_list'|trans }}</h2><br>
+    {% if users is not empty %}
+        <table class="table">
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.firstName }} - {{ user.lastName }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{{ 'message.user_registered'| trans }}</p>
+    {% endif %}
+{% endblock %}

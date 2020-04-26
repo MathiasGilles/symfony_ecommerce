@@ -29,7 +29,11 @@ message:
     product_save: "Produit sauvegardé"
     product_delete: "Produit supprimé"
     product_added: "Produit ajouté au panier"
-    profil_update: "Profile modifié" 
+    profil_update: "Profile modifié"
+    cart_not_bought: "Panier non validé"
+    user_list: "Liste des utilisateurs"
+    cart_not_validate: "Aucun panier non validé"
+    user_registered: "Aucun user inscrit"
 
 product:
     create: "Ajouter un produit"

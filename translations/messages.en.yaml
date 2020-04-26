@@ -30,6 +30,10 @@ message:
     product_delete: "Product deleted"
     product_added : "Product added to your cart"
     profil_update: "Profil updated"
+    cart_not_bought: "Cart not confirmed"
+    user_list: "User list"
+    cart_not_validate: "no cart validated"
+    user_registered: "no user registered"
 
 product:
     create: "Add a product"
