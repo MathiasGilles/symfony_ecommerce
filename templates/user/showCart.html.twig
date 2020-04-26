@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Commande de {{ cart.user.firstName }}
+{% endblock %}
+
+{% block body %}
+
+    <h2> Commande de {{ cart.user.firstName }}</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>{{ 'table.product' | trans }}</td>
+            <td>{{ 'table.photo'| trans }}</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for content in cart.cartContents %}
+            <tr>
+                <td>{{ content.id }}</td>
+                <td>{{ content.product.name }}</td>
+                <td><img style="width: 220px" src="{{ asset('/uploads/' ~ content.product.photo) }}"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

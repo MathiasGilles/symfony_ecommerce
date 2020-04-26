@@ -13,7 +13,7 @@ class CartController extends AbstractController
     /**
      * @Route("/cart", name="cart")
      */
-    public function index(CartRepository $repo)
+    public function index(CartRepository $repo) // display the cart content
     {
 
         $cart = $repo->findOneBy(['user' => $this->getUser(), 'status' => false]);
@@ -26,7 +26,7 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/delete/{id}",name="cart_product_delete")
      */
-    public function delete(CartContent $content = null,TranslatorInterface $translator)
+    public function delete(CartContent $content = null,TranslatorInterface $translator) // delete one product from the cart
     {
         if ($content != null) {
             $manager = $this->getDoctrine()->getManager();
@@ -45,7 +45,7 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/buy",name="cart_buy")
      */
-    public function buy(CartRepository $repo,TranslatorInterface $translator)
+    public function buy(CartRepository $repo,TranslatorInterface $translator) // permit to buy a cart
     {
         $cart = $repo ->findOneBy(['user' => $this->getUser(), 'status' => false]);
         $manager = $this->getDoctrine()->getManager();

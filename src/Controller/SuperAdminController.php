@@ -12,7 +12,7 @@ class SuperAdminController extends AbstractController
     /**
      * @Route("/super_admin", name="super_admin")
      */
-    public function index(CartRepository $repo, UserRepository $repoUser)
+    public function index(CartRepository $repo, UserRepository $repoUser) // display the non validated carts and the user registered ordered by desc
     {
         $users = $repoUser->findBy([],['id' => 'DESC']);
 

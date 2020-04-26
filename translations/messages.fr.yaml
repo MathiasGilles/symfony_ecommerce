@@ -50,9 +50,10 @@ table:
     quantity: Quantité
     price: Prix
     amount: Montant
+    photo: Photo
 
 nav:
-    home: Acceuil
+    home: Accueil
     cart: "Mon panier"
     account: "Mon compte"
     login: "Se connecter"

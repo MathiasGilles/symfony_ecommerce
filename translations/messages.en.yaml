@@ -50,6 +50,7 @@ table:
     quantity: Quantity
     price: Price
     amount: Amount
+    photo: Photo
 
 nav:
     home: home

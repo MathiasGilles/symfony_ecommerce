@@ -33,7 +33,7 @@
                     <td>{{cart.id}}</td>
                     <td>{{totalAmount}}</td>
                     <td>{{cart.buyAt|date("m/d/Y")}}</td>
-                    <td><a href="#" class="btn btn-primary">Show</a></td>
+                    <td><a href="{{ path('user_cart', {id: cart.id}) }}" class="btn btn-primary">Show</a></td>
                 </tr>
             {% endfor %}
         </tbody>

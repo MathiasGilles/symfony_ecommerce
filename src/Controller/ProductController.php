@@ -20,7 +20,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/product", name="product")
      */
-    public function index(ProductRepository $repo)
+    public function index(ProductRepository $repo) //display all products
     {
         $products = $repo->findAll();
         return $this->render('product/index.html.twig', [
@@ -32,7 +32,7 @@ class ProductController extends AbstractController
      * @Route("/new/product",name="product_new")
      * @Route("/edit/product/{id}",name="product_edit")
      */
-    public function new(Product $product = null, Request $request,TranslatorInterface $translator)
+    public function new(Product $product = null, Request $request,TranslatorInterface $translator) //edit one product
     {
         if (!$product) {
             $product = new Product();
@@ -77,7 +77,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/delete/product/{id}",name="product_delete")
      */
-    public function delete($id = null, ProductRepository $repo,TranslatorInterface $translator)
+    public function delete($id = null, ProductRepository $repo,TranslatorInterface $translator) // delete one product from the product list
     {
 
         if ($id != null) {
@@ -95,6 +95,7 @@ class ProductController extends AbstractController
      * @Route("/product/add/{id}",name="product_add_to_cart")
      */
     public function detail($id, ProductRepository $repo,Request $request,CartRepository $repoCart,TranslatorInterface $translator)
+        // permit to display the detail of the product, and add a product to the cart
     {
 
         $product = $repo->find($id);

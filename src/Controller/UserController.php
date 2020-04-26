@@ -15,7 +15,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/{id}", name="user")
      */
-    public function index(CartRepository $repo)
+    public function index(CartRepository $repo) // display user orders info
     {
         $carts = $repo->findBy(['user' => $this->getUser(), 'status' => true]);
         return $this->render('user/index.html.twig', [
@@ -26,7 +26,7 @@ class UserController extends AbstractController
     /**
      * @Route("/user/edit/{id}",name="user_edit")
      */
-    public function edit(Request $request, User $user, TranslatorInterface $translator)
+    public function edit(Request $request, User $user, TranslatorInterface $translator) // edit the user
     {
         $form = $this->createForm(UserEditType::class, $user);
         $form->handleRequest($request);
@@ -36,12 +36,24 @@ class UserController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash("success", $translator->trans('message.profil_update'));
-            return $this->redirectToRoute('user',['id' => '$this->getUser()']);
+            return $this->redirectToRoute('user', ['id' => '$this->getUser()']);
         }
 
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'formUser' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/user/cart/{id}",name="user_cart")
+     */
+
+    public function showCartBought(CartRepository $repo, $id) // recover the selected order
+    {
+        $cart = $repo->find($id);
+        return $this->render('user/showCart.html.twig', [
+            'cart' => $cart
         ]);
     }
 }
